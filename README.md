@@ -1,0 +1,2 @@
+# Lifty
+Lifty Discord Bot
