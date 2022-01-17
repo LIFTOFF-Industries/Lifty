@@ -1,13 +1,21 @@
 import discord
+import os
+from discord.ext import commands
 
-# Discord client
-client = discord.Client()
+# Defines
+intents = discord.Intents(members=True)
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Message on startup
-@client.event
+@bot.event
 async def on_ready():
-    print('Eingeloggt als {0.user}'.format(client))
+    print('Bot running...')
+    print('Name: {0.user.name}'.format(bot))
+    print('ID: {0.user.id}'.format(bot))
+    print('--------------------')
+    await bot.change_presence(activity=discord.Game("Making Money"))
 
-#bot.load_extension(entry)
+# Load Extensions
+bot.load_extension('entry')
 
-client.run('Token')
+bot.run('Token')
