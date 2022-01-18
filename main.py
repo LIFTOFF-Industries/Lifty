@@ -21,4 +21,4 @@ async def on_ready():
 bot.load_extension('entry')
 bot.load_extension('roles')
 
-bot.run('Token')
+bot.run('ODMzNDI5OTA0NzYyMDc3MjA2.YHyOFQ.7gJHZ_fJUHIt4rVaLnqypwsGv_g')
