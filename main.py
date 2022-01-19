@@ -1,12 +1,17 @@
 import discord
 import os
 from discord.ext import commands
+from dotenv import load_dotenv
 
 # Defines
 intents = discord.Intents.default()
 intents.members = True
 intents.reactions = True
 bot = commands.Bot(command_prefix='!', intents=intents)
+load_dotenv('variables.env')
+
+# Variables
+token = os.getenv('DISCORD_TOKEN')
 
 # Message on startup
 @bot.event
@@ -21,4 +26,4 @@ async def on_ready():
 bot.load_extension('entry')
 bot.load_extension('roles')
 
-bot.run('ODMzNDI5OTA0NzYyMDc3MjA2.YHyOFQ.7gJHZ_fJUHIt4rVaLnqypwsGv_g')
+bot.run(token)
