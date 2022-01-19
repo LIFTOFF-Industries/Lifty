@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 intents = discord.Intents.default()
 intents.members = True
 intents.reactions = True
+intents.voice_states = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 load_dotenv('variables.env')
 
@@ -25,5 +26,6 @@ async def on_ready():
 # Load Extensions
 bot.load_extension('entry')
 bot.load_extension('roles')
+bot.load_extension('tempvoice')
 
 bot.run(token)
