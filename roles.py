@@ -39,6 +39,12 @@ class roles(commands.Cog):
             message = await channel.fetch_message(event.message_id)
             await message.remove_reaction(event.emoji, event.member)
 
+            line1 = '**H-Hey {0.name}.**'.format(event.member)
+            line2 = 'Vielen Dank, dass du unsere regeln gelesen und akzeptiert hast.'
+            line3 = 'Du hast nun Zugang zu unserem öffentlichen Bereich.'
+            line4 = 'Lifty'
+            await event.member.send(line1 + '\n\n' + line2 + '\n' + line3 + '\n\n' + line4)   
+
 
 # define extension
 def setup(bot):

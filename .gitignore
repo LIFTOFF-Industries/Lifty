@@ -2,3 +2,4 @@ Token.txt
 __pycache__/entry.cpython-38.pyc
 __pycache__/roles.cpython-38.pyc
 variables.env
+variablestest.env
