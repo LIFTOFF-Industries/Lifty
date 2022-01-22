@@ -28,7 +28,7 @@ class tempvoice(commands.Cog):
         if after.channel != None:
             if after.channel.id == voice_channel_id:
                 print('{0} joined {1.channel}'.format(member, after))
-                voice = await member.guild.create_voice_channel(name = member.name + "'s Voice", category = after.channel.category)
+                voice = await member.guild.create_voice_channel(name = member.name + "'s Voice", category = after.channel.category, bitrate = 256)
                 await voice.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
                 await member.move_to(channel = voice)
                 print('Tempvoice "{0}" created and {1} moved'.format(voice, member))
