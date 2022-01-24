@@ -10,6 +10,7 @@ load_dotenv('variables.env')
 
 # Variables
 voice_channel_id = int(os.getenv('VOICE_CHANNEL_ID'))
+stream_voice_channel_id = int(os.getenv('STREAM_VOICE_CHANNEL_ID'))
 
 # Define class
 class tempvoice(commands.Cog):
@@ -26,9 +27,11 @@ class tempvoice(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         if after.channel != None:
+            
+            # Temp voice
             if after.channel.id == voice_channel_id:
                 print('{0} joined {1.channel}'.format(member, after))
-                voice = await member.guild.create_voice_channel(name = member.name + "'s Voice", category = after.channel.category, bitrate = 256)
+                voice = await member.guild.create_voice_channel(name = member.name + "'s voice", category = after.channel.category, bitrate = 256)
                 await voice.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
                 await member.move_to(channel = voice)
                 print('Tempvoice "{0}" created and {1} moved'.format(voice, member))
@@ -38,6 +41,20 @@ class tempvoice(commands.Cog):
                 await self.bot.wait_for('voice_state_update', check = check)
                 await voice.delete()
                 print('Tempvoice "{0}" deleted'.format(voice))
+
+            # Stream temp voice
+            if after.channel.id == stream_voice_channel_id:
+                print('{0} joined {1.channel}'.format(member, after))
+                voice = await member.guild.create_voice_channel(name = member.name + "'s stream", category = after.channel.category, bitrate = 256)
+                await voice.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
+                await member.move_to(channel = voice)
+                print('Stream tempvoice "{0}" created and {1} moved'.format(voice, member))
+
+                def check(x, y, z):
+                    return len(voice.members) == 0
+                await self.bot.wait_for('voice_state_update', check = check)
+                await voice.delete()
+                print('Stream tempvoice "{0}" deleted'.format(voice))
         
 # define extension
 def setup(bot):
