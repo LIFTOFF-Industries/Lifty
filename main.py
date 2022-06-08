@@ -9,7 +9,7 @@ intents.members = True
 intents.reactions = True
 intents.voice_states = True
 bot = commands.Bot(command_prefix='!', intents=intents)
-load_dotenv('variables.env')
+load_dotenv('variablestest.env')
 
 # Variables
 token = os.getenv('DISCORD_TOKEN')
@@ -24,8 +24,7 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game("LiftOff Industries"))
 
 # Load Extensions
-bot.load_extension('entry')
-bot.load_extension('roles')
 bot.load_extension('tempvoice')
+bot.load_extension('ticket')
 
 bot.run(token)

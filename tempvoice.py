@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 load_dotenv('variables.env')
 
 # Variables
-voice_channel_id = int(os.getenv('VOICE_CHANNEL_ID'))
-stream_voice_channel_id = int(os.getenv('STREAM_VOICE_CHANNEL_ID'))
+voice_channel_id = int(os.getenv('CHANNEL_VOICE_ID'))
+stream_voice_channel_id = int(os.getenv('CHANNEL_VOICESTREAM_ID'))
 
 # Define class
 class tempvoice(commands.Cog):
@@ -31,7 +31,7 @@ class tempvoice(commands.Cog):
             # Temp voice
             if after.channel.id == voice_channel_id:
                 print('{0} joined {1.channel}'.format(member, after))
-                voice = await member.guild.create_voice_channel(name = member.name + "'s voice", category = after.channel.category, bitrate = before.channel.bitrate)
+                voice = await member.guild.create_voice_channel(name = member.name + "'s voice", category = after.channel.category, bitrate = after.channel.bitrate)
                 await voice.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
                 await member.move_to(channel = voice)
                 print('Tempvoice "{0}" created and {1} moved'.format(voice, member))
@@ -45,7 +45,7 @@ class tempvoice(commands.Cog):
             # Stream temp voice
             if after.channel.id == stream_voice_channel_id:
                 print('{0} joined {1.channel}'.format(member, after))
-                voice = await member.guild.create_voice_channel(name = member.name + "'s stream", category = after.channel.category, bitrate = before.channel.bitrate)
+                voice = await member.guild.create_voice_channel(name = member.name + "'s stream", category = after.channel.category, bitrate = after.channel.bitrate)
                 await voice.set_permissions(member, connect = True, mute_members = True, move_members = True, manage_channels = True)
                 await member.move_to(channel = voice)
                 print('Stream tempvoice "{0}" created and {1} moved'.format(voice, member))
