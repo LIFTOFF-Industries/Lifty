@@ -25,7 +25,9 @@ async def on_ready():
 
 # Load Extensions
 bot.load_extension('tempvoice')
-bot.load_extension('ticket')
+bot.load_extension('support')
+bot.load_extension('appliance')
+bot.load_extension('diplo')
 bot.load_extension('help')
 
 bot.run(token)
