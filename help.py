@@ -29,15 +29,15 @@ class help(commands.Cog):
         if ctx.channel.id != channel_bot_id:
             await ctx.message.delete()
         elif ctx.channel.id == channel_bot_id:
-            await ctx.message.delete()
+            await ctx.channel.purge()
             # Embed
             embed = discord.Embed(title = 'Lifty Befehlsübersicht', description = 'Hier findest du eine Übersicht meiner Befehle!', color = discord.Color.from_rgb(218, 169, 0))
             
             embed.set_thumbnail(url = 'https://i.imgur.com/oRGuHnZ.png')
 
             embed.add_field(name = 'Support', value = '!support / Ich erstelle einen Privaten Kanal um dich bei Fragen rund um unsere Orga oder den Discord zu unterstützen.', inline = False)
-            embed.add_field(name = 'Diplo', value = '!diplo / Ich erstelle einen Privaten Kanal um dich bei Diplomatischen Anfragen zu unterstützen.', inline = False)
-            embed.add_field(name = 'Support', value = '!appliance / Ich erstelle einen Privaten Kanal für deine Bewerbung.', inline = False)
+            embed.add_field(name = 'Diplomatie', value = '!diplo / Ich erstelle einen Privaten Kanal um dich bei Diplomatischen Anfragen zu unterstützen.', inline = False)
+            embed.add_field(name = 'Bewerbung', value = '!appliance / Ich erstelle einen Privaten Kanal für deine Bewerbung.', inline = False)
             
             embed.set_footer(text = 'Meine Befehle können nur in diesem Kanal genutzt werden!')
 
