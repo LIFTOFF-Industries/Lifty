@@ -52,7 +52,7 @@ class ticket(commands.Cog):
     
     # Handle application command
     @commands.command()
-    async def bewerbung(self, ctx):
+    async def appliance(self, ctx):
         print('Member {0.author} wants to applicate.'.format(ctx))
         if ctx.channel.id != channel_bot_id:
             print('Wrong channel detected, command will be deleted.')
