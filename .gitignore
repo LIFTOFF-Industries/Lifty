@@ -1,6 +1,12 @@
 Token.txt
 __pycache__/entry.cpython-38.pyc
 __pycache__/roles.cpython-38.pyc
+__pycache__/appliance.cpython-38.pyc
+__pycache__/diplo.cpython-38.pyc
+__pycache__/help.cpython-38.pyc
+__pycache__/support.cpython-38.pyc
+__pycache__/tempvoice.cpython-38.pyc
+__pycache__/ticket.cpython-38.pyc
 variables.env
 variablestest.env
 Lifty.zip
